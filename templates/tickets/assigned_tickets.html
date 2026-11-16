@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Assigned Tickets{% endblock %}
+{% block content %}
+<h2 class="mb-4">Assigned Tickets</h2>
+<div class="table-responsive">
+<table class="table table-bordered bg-white">
+    <thead><tr><th>ID</th><th>Employee</th><th>Category</th><th>Priority</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+    {% for t in tickets %}
+        <tr>
+            <td>#{{ t.ticket_id }}</td>
+            <td>{{ t.employee.username }}</td>
+            <td>{{ t.get_category_display }}</td>
+            <td><span class="badge badge-priority-{{ t.priority }}">{{ t.get_priority_display }}</span></td>
+            <td><span class="badge badge-status-{{ t.status }}">{{ t.get_status_display }}</span></td>
+            <td>
+                <a href="{% url 'ticket_detail' t.ticket_id %}" class="btn btn-sm btn-outline-secondary">View</a>
+                <a href="{% url 'update_status' t.ticket_id %}" class="btn btn-sm btn-outline-primary">Update</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="6" class="text-center text-muted">No tickets assigned yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

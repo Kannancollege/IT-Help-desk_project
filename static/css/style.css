@@ -1,0 +1,194 @@
+/* ===== IT Helpdesk — Custom Theme ===== */
+
+:root {
+  --brand-primary: #4f46e5;
+  --brand-primary-dark: #4338ca;
+  --brand-accent: #06b6d4;
+  --surface: #ffffff;
+  --surface-muted: #f4f5fb;
+  --text-main: #1f2340;
+  --text-muted: #6b7280;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-soft: 0 4px 16px rgba(31, 35, 64, 0.06);
+  --shadow-hover: 0 8px 24px rgba(79, 70, 229, 0.15);
+}
+
+body {
+  background: linear-gradient(180deg, #f4f5fb 0%, #eef0fa 100%);
+  color: var(--text-main);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-primary-dark)) !important;
+  box-shadow: 0 2px 12px rgba(67, 56, 202, 0.25);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: var(--brand-primary-dark);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: var(--surface);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card h2 {
+  font-weight: 700;
+  color: var(--brand-primary-dark);
+}
+
+.card h6.text-muted {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+  border: none;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--brand-primary-dark), var(--brand-accent));
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.btn-outline-secondary,
+.btn-outline-primary,
+.btn-outline-dark {
+  border-width: 1.5px;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  border-radius: var(--radius-md);
+  border: 1.5px solid #e2e4f0;
+  padding: 0.55rem 0.85rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- Tables ---------- */
+.table {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.table thead {
+  background-color: var(--surface-muted);
+}
+
+.table thead th {
+  border-bottom: none;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.table tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f7f7fd;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  padding: 0.85rem 1rem;
+}
+
+/* ---------- Badges (status & priority) ---------- */
+.badge {
+  padding: 0.4em 0.75em;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.badge-status-OPEN        { background-color: #94a3b8; color: #fff; }
+.badge-status-IN_PROGRESS { background-color: #4f46e5; color: #fff; }
+.badge-status-RESOLVED    { background-color: #10b981; color: #fff; }
+.badge-status-CLOSED      { background-color: #1f2340; color: #fff; }
+
+.badge-priority-LOW      { background-color: #94a3b8; color: #fff; }
+.badge-priority-MEDIUM   { background-color: #06b6d4; color: #fff; }
+.badge-priority-HIGH     { background-color: #f59e0b; color: #fff; }
+.badge-priority-CRITICAL { background-color: #ef4444; color: #fff; }
+
+/* ---------- Alerts ---------- */
+.alert {
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Hero (home page) ---------- */
+.display-5 {
+  color: var(--brand-primary-dark);
+}
+
+/* ---------- Misc ---------- */
+a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--brand-primary-dark);
+  text-decoration: underline;
+}
+
+hr {
+  opacity: 0.15;
+}
+
+dt {
+  color: var(--text-muted);
+  font-weight: 600;
+}

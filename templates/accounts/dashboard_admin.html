@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row mb-4 g-3">
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Total Tickets</h6><h2>{{ total_tickets }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Open Tickets</h6><h2>{{ open_tickets }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Employees</h6><h2>{{ total_users }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Technicians</h6><h2>{{ total_technicians }}</h2></div></div>
+</div>
+
+<div class="d-flex gap-2 mb-4">
+    <a href="{% url 'all_tickets' %}" class="btn btn-primary">All Tickets</a>
+    <a href="{% url 'manage_users' %}" class="btn btn-outline-secondary">Users</a>
+    <a href="{% url 'manage_technicians' %}" class="btn btn-outline-secondary">Technicians</a>
+    <a href="{% url 'reports' %}" class="btn btn-outline-secondary">Reports</a>
+    <a href="/admin/" class="btn btn-outline-dark">Django Admin</a>
+</div>
+
+<h4>Recent Tickets</h4>
+<div class="table-responsive">
+<table class="table table-bordered bg-white">
+    <thead><tr><th>ID</th><th>Employee</th><th>Priority</th><th>Status</th><th>Technician</th><th></th></tr></thead>
+    <tbody>
+    {% for t in all_tickets|slice:":10" %}
+        <tr>
+            <td>#{{ t.ticket_id }}</td>
+            <td>{{ t.employee.username }}</td>
+            <td><span class="badge badge-priority-{{ t.priority }}">{{ t.get_priority_display }}</span></td>
+            <td><span class="badge badge-status-{{ t.status }}">{{ t.get_status_display }}</span></td>
+            <td>{{ t.technician.username|default:"Unassigned" }}</td>
+            <td>
+                {% if not t.technician %}
+                    <a href="{% url 'assign_technician' t.ticket_id %}" class="btn btn-sm btn-outline-primary">Assign</a>
+                {% else %}
+                    <a href="{% url 'ticket_detail' t.ticket_id %}" class="btn btn-sm btn-outline-secondary">View</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="6" class="text-center text-muted">No tickets yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

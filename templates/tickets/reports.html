@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<h2 class="mb-4">Reports</h2>
+<div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Total</h6><h2>{{ total }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Open</h6><h2>{{ open }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">In Progress</h6><h2>{{ in_progress }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Resolved</h6><h2>{{ resolved }}</h2></div></div>
+</div>
+<div class="row g-3">
+    <div class="col-md-3"><div class="card p-3 shadow-sm"><h6 class="text-muted">Closed</h6><h2>{{ closed }}</h2></div></div>
+</div>
+<p class="text-muted mt-4">For deeper breakdowns (by category/priority/technician performance), use the Django Admin's filters or export a CSV via <code>manage.py</code> as your project grows.</p>
+{% endblock %}

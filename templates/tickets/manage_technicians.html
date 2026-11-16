@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Technicians{% endblock %}
+{% block content %}
+<h2 class="mb-4">Technicians</h2>
+<p class="text-muted">To add a new technician, use the <a href="/admin/accounts/user/add/">Django Admin</a> and set the role to "Technician".</p>
+<div class="table-responsive">
+<table class="table table-bordered bg-white">
+    <thead><tr><th>Username</th><th>Email</th><th>Department</th><th>Assigned Tickets</th></tr></thead>
+    <tbody>
+    {% for t in technicians %}
+        <tr>
+            <td>{{ t.username }}</td>
+            <td>{{ t.email }}</td>
+            <td>{{ t.department }}</td>
+            <td>{{ t.tickets_assigned.count }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="4" class="text-center text-muted">No technicians added yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
